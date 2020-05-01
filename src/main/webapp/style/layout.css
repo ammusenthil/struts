@@ -34,7 +34,7 @@ div#header {
     margin: 0 0 5em 0;
     padding: 40px 20px;
     color: white;
-    background: black;
+    background: gray;
     text-align: center;
 }
 
@@ -45,12 +45,12 @@ div#content {
 
 div#footer {
     color: white;
-    background-color: black;
+    background-color: gray;
 }
 
 a, a:link, a:visited, a:active {
     color: white;
-    background-color: black;
+    background-color: gray;
 }
 
 a:hover {

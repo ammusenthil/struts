@@ -1,7 +1,5 @@
 package org.superbiz.struts;
 
-import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
-import org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -9,37 +7,48 @@ import org.springframework.context.annotation.Bean;
 
 import javax.servlet.Filter;
 
+import java.util.Arrays;
 import java.util.List;
 
-import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 
 @SpringBootApplication
 public class Application {
 
     public static void main(String... args) {
+
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public FilterRegistrationBean filterDispatch() {
-        return buildFilterRegistration(2, new StrutsPrepareAndExecuteFilter(),
-            asList("/", "/addUserForm.action", "/addUser.action",
-                "/findUserForm.action", "/findUser.action",
-                "/listAllUsers.action"));
-    }
-
-    @Bean
-    public FilterRegistrationBean sitemeshPageFilter() {
-        return buildFilterRegistration(1, new SiteMeshFilter(),
-            singletonList("/*"));
-    }
-
-    private FilterRegistrationBean buildFilterRegistration(int order, Filter filter, List<String> urlPatterns) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(filter);
-        registration.setUrlPatterns(urlPatterns);
-        registration.setOrder(order);
-        return registration;
-    }
+//
+//    @Bean
+//    public FilterRegistrationBean filterDispatcher() {
+//
+//        return buildFilterRegistration(0, new FilterDispatcher());
+//    }
+//
+//    @Bean
+//    public FilterRegistrationBean actionContextCleanup() {
+//        return buildFilterRegistration(1, new ActionContextCleanUp());
+//    }
+//
+//    @Bean
+//    public FilterRegistrationBean sitemeshPageFilter() {
+//
+//        return buildFilterRegistration(2, new PageFilter());
+//    }
+//
+//
+//    private FilterRegistrationBean buildFilterRegistration(int order, Filter filter) {
+//        FilterRegistrationBean registration = new FilterRegistrationBean();
+//
+//        registration.setFilter(filter);
+//        registration.setUrlPatterns(
+//                Arrays.asList(
+//                "/decorators/layout.jsp",
+//                "/displayUser.jsp",
+//                "/displayUsers.jsp"));
+//        registration.setOrder(order);
+//        return registration;
+//    }
 }
